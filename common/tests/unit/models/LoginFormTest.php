@@ -7,7 +7,7 @@ use common\models\LoginForm;
 use common\fixtures\UserFixture;
 
 /**
- * Login form test
+ * Login models test
  */
 class LoginFormTest extends \Codeception\Test\Unit
 {

@@ -6,7 +6,7 @@ use yii\base\InvalidParamException;
 use common\models\User;
 
 /**
- * Password reset form
+ * Password reset models
  */
 class ResetPasswordForm extends Model
 {
@@ -19,7 +19,7 @@ class ResetPasswordForm extends Model
 
 
     /**
-     * Creates a form model given a token.
+     * Creates a models model given a token.
      *
      * @param string $token
      * @param array $config name-value pairs that will be used to initialize the object properties

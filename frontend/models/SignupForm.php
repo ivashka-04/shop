@@ -4,8 +4,9 @@ namespace frontend\models;
 use yii\base\Model;
 use common\models\User;
 
+
 /**
- * Signup form
+ * Signup models
  */
 class SignupForm extends Model
 {
@@ -41,18 +42,18 @@ class SignupForm extends Model
      *
      * @return User|null the saved model or null if saving fails
      */
-    public function signup()
+    /*public function signup()
     {
         if (!$this->validate()) {
             return null;
         }
         
-        $user = new User();
-        $user->username = $this->username;
+        $user = new User($this->username, $this->email, $this->password);*/
+       /* $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
-        $user->generateAuthKey();
+        $user->generateAuthKey();*/
         
-        return $user->save() ? $user : null;
-    }
+//        return $user->save() ? $user : null;
+//    }
 }
