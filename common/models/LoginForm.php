@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use shop\entities\User\User;
 use Yii;
 use yii\base\Model;
 

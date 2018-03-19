@@ -9,7 +9,7 @@
 namespace frontend\services\Auth;
 
 
-use common\models\User;
+use shop\entities\User\User;
 use frontend\models\SignupForm;
 
 class SignupService
