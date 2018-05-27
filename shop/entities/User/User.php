@@ -5,7 +5,9 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\redis\ActiveQuery;
 use yii\web\IdentityInterface;
+use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 
 
 /**
@@ -30,11 +32,38 @@ class User extends ActiveRecord implements IdentityInterface
 
 
     /**
+     * @return ActiveQuery
+     */
+    public function getNetworks():ActiveQuery
+    {
+        return $this->hasMany(Network::className(),['user_id' => 'id']);
+    }
+
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
     {
         return '{{%user}}';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            [
+                'class' => SaveRelationsBehavior::className(),
+                'relations' => ['networks'],
+            ],
+        ];
+    }
+
+    public function transactions()
+    {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
     }
 
     public static function signup($username, $email, $password)
@@ -45,12 +74,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @inheritdoc
      *
      */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
+
 
     /**
      * @inheritdoc

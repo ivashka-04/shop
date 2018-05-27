@@ -7,6 +7,7 @@ return [
     'rules' => [
         '' => 'site/index',
         '<_a:login|logout>' => 'site/<a>',
+        'contact' => 'contact/index',
 
         '<_c:[\w\-]+>' => '<_c>/index',
         '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
